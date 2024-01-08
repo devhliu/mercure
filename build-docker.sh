@@ -89,9 +89,10 @@ do
   build_component $component
 done
 
-docker build nomad/sshd -t $PREFIX/alpine-sshd:latest
-docker build nomad/processing -t $PREFIX/processing-step:$TAG -t $PREFIX/processing-step:latest
-docker build nomad/dummy-processor -t $PREFIX/mercure-dummy-processor:$TAG -t $PREFIX/processing-step:latest
+# disable for docker_install mode 
+# docker build nomad/sshd -t $PREFIX/alpine-sshd:latest
+# docker build nomad/processing -t $PREFIX/processing-step:$TAG -t $PREFIX/processing-step:latest
+# docker build nomad/dummy-processor -t $PREFIX/mercure-dummy-processor:$TAG -t $PREFIX/processing-step:latest
 
 echo ""
 echo "Done."

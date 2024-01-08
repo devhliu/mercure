@@ -8,8 +8,8 @@ echo "Installing Python runtime environment..."
 python3 -m venv "$MERCURE_BASE/env"
 
 echo "Installing required Python packages..."
-$MERCURE_BASE/env/bin/pip install wheel
-$MERCURE_BASE/env/bin/pip install --isolated --quiet -r "$MERCURE_BASE/app/requirements.txt"
+$MERCURE_BASE/env/bin/pip install wheel -i https://pypi.tuna.tsinghua.edu.cn/simple
+$MERCURE_BASE/env/bin/pip install --isolated --quiet -r "$MERCURE_BASE/app/requirements.txt" -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 echo "Creating default configuration files..."
 mkdir $MERCURE_BASE/config

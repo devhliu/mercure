@@ -7,7 +7,7 @@ services:
     secrets:
       - orthanc.json
     environment:
-      - ORTHANC_NAME=HelloWorld
+      - ORTHANC_NAME=Orthanc
     volumes:
       - db:/var/lib/orthanc/db/
     restart: always

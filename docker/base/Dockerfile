@@ -1,7 +1,19 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
+
+# timezone
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# using ustc mirror
+RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+
+ENV DEBIAN_FRONTEND="noninteractive"
+
+# install necessary packages and adduser mercure
 RUN apt-get update && apt-get -y upgrade && \
-    DEBIAN_FRONTEND="noninteractive" apt-get -y install \
-    tzdata build-essential wget git dcmtk jq inetutils-ping entr sshpass lsb-release lsb-core libpq-dev ca-certificates python3-wheel python3-dev python3 python3-venv libqt5core5a --no-install-recommends && \
+    apt-get -y install tzdata build-essential wget git dcmtk jq inetutils-ping entr sshpass lsb-release \
+    lsb-core libpq-dev ca-certificates python3-wheel python3-dev python3 python3-venv libqt5core5a --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     useradd -ms /bin/bash mercure && \
     mkdir -p /opt/mercure/app/installation /opt/mercure/app/configuration

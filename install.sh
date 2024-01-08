@@ -34,7 +34,7 @@ echo ""
 OWNER=$USER
 if [ $OWNER = "root" ]
 then
-  OWNER=$(logname)
+  OWNER=$(whoami)
   echo "Running as root, but setting $OWNER as owner."
 fi
 
